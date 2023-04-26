@@ -1,4 +1,4 @@
 # Asignment3
 ASTANA IT UNIVERSITY 
-SUBMITTED BY KAIRBEKOV:
-PROFESSOR:
+Professor:Khaimuldin Askar
+Submitted by:Kairbekov Adilet
