@@ -64,6 +64,24 @@ public class Student {
         this.table = new Entry[capacity];
         this.size = 0;
     }
+       public void put(K key, V value) {
+        int index = hash(key);
+        Entry<K, V> entry = table[index];
+        while (entry != null) {
+            if (entry.key.equals(key)) {
+                entry.value = value;
+                return;
+            }
+            entry = entry.next;
+        }
+        Entry<K, V> newEntry = new Entry<>(key, value);
+        newEntry.next = table[index];
+        table[index] = newEntry;
+        size++;
+        if (size >= table.length * LOAD_FACTOR) {
+            resize();
+        }
+    }
        
        
        
