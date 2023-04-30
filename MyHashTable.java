@@ -82,10 +82,61 @@ public class Student {
             resize();
         }
     }
-       
-       
-       
-       
-   }
-   
+       public V get(K key) {
+        int index = hash(key);
+        Entry<K, V> entry = table[index];
+        while (entry != null) {
+            if (entry.key.equals(key)) {
+                return entry.value;
+            }
+            entry = entry.next;
+        }
+        return null;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public int[] bucketSizes() {
+        int[] sizes = new int[table.length];
+        for (Entry<K, V> entry : table) {
+            int count = 0;
+            while (entry != null) {
+                count++;
+                entry = entry.next;
+            }
+            sizes[count]++;
+        }
+        return sizes;
+    }
+
+    private int hash(K key) {
+        // implement your own hashCode() method in MyTestingClass
+        return key.hashCode() % table.length;
+    }
+
+    private void resize() {
+        Entry<K, V>[] oldTable = table;
+        table = new Entry[table.length * 2];
+        size = 0;
+        for (Entry<K, V> entry : oldTable) {
+            while (entry != null) {
+                put(entry.key, entry.value);
+                entry = entry.next;
+            }
+        }
+    }
+
+    private static class Entry<K, V> {
+        K key;
+        V value;
+        Entry<K, V> next;
+
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+            this.next = null;
+        }
+    }                      
 }
