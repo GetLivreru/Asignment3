@@ -50,6 +50,20 @@ public class Student {
 }
     //class MyHashTable
    public class MyHashTable<K,V>{
+       private static final int DEFAULT_CAPACITY = 16;
+    private static final double LOAD_FACTOR = 0.75;
+
+    private Entry<K, V>[] table;
+    private int size;
+
+    public MyHashTable() {
+        this(DEFAULT_CAPACITY);
+    }
+
+    public MyHashTable(int capacity) {
+        this.table = new Entry[capacity];
+        this.size = 0;
+    }
        
        
        
