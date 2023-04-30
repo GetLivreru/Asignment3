@@ -46,5 +46,11 @@ public class Student {
         return result;
     }
 }
-
+   public class MyHashTable<K,V>{
+       
+       
+       
+       
+   }
+   
 }
