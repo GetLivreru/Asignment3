@@ -1,7 +1,17 @@
 import java.util.Random;
 public class Main {
     public static void main(String[] args) {
-       
+        MyHashTable<MyTestingClass, Student> table = new MyHashTable<>();
+        Random random = new Random();
+        for (int i = 0; i < 10000; i++){
+            MyTestingClass key = new MyTestingClass(random.nextInt(100), random.nextInt(100));
+            Student value = new Student("Student " + i, 18 + random.nextInt(10));
+            table.put(key, value);
+        }
+        int[] sizes = table.bucketSizes();
+        for (int i = 0; i < sizes.length; i++) {
+            System.out.println("Bucket " + i + ": " + sizes[i] + " elements");
+        }
     }
 }
 // Class Student
